@@ -1,7 +1,7 @@
 import React from 'react';
 
 const App = () => (
-    <div>
+    <div id='imageDisplayer'>
       hello world
     </div>
 );

@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: path.resolve(__dirname, 'client', 'components', 'index.jsx'),
+  entry: path.resolve(__dirname, 'client', 'index.jsx'),
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js',
@@ -11,11 +11,11 @@ module.exports = {
       {
         test: /\.jsx?$/,
         include: [
-          path.resolve(__dirname, 'client', 'components')
+          path.resolve(__dirname, 'client'),
         ],
         loader: 'babel-loader',
         options: {
-          presets: ['@babel/preset-react']
+          presets: ['@babel/preset-react'],
         },
       },
     ],

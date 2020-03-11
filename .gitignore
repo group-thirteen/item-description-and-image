@@ -1,4 +1,4 @@
-client/dist
+public
 
 node_modules
 .eslintrc.js

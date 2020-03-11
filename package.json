@@ -8,7 +8,8 @@
   },
   "scripts": {
     "build-dev": "webpack -dw",
-    "server-dev": "nodemon ./server/index.js"
+    "server-dev": "nodemon ./server/index.js",
+    "test": "jest"
   },
   "dependencies": {
     "express": "^4.17.1",
@@ -19,11 +20,13 @@
     "@babel/core": "^7.8.7",
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-react": "^7.8.3",
+    "babel-jest": "^25.1.0",
     "babel-loader": "^8.0.6",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-react": "^7.19.0",
+    "jest": "^25.1.0",
     "nodemon": "^2.0.2",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11"
@@ -38,5 +41,13 @@
   "bugs": {
     "url": "https://github.com/group-thirteen/item-description-and-image/issues"
   },
-  "homepage": "https://github.com/group-thirteen/item-description-and-image#readme"
+  "homepage": "https://github.com/group-thirteen/item-description-and-image#readme",
+
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    }
+  }
+  
 }

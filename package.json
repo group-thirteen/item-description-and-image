@@ -20,8 +20,10 @@
     "@babel/core": "^7.8.7",
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-react": "^7.8.3",
+    "@types/jest": "^25.1.4",
     "babel-jest": "^25.1.0",
     "babel-loader": "^8.0.6",
+    "enzyme": "^3.11.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.20.1",
@@ -42,12 +44,10 @@
     "url": "https://github.com/group-thirteen/item-description-and-image/issues"
   },
   "homepage": "https://github.com/group-thirteen/item-description-and-image#readme",
-
   "jest": {
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
     }
   }
-  
 }

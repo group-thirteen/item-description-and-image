@@ -6,7 +6,7 @@ urlMidfix = '.s3.amazonaws.com/'
 output = open('northerlyURLs.txt', 'a')
 
 for image in bucket.objects.all():
-    url = '"' + bucketName + urlMidfix + image.key + '"\n'
+    url =  bucketName + urlMidfix + image.key + '\n'
     output.write(url)
 
 output.close()

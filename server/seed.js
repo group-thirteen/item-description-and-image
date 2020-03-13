@@ -1,7 +1,7 @@
 const fs = require('fs');
 const mongoose = require('mongoose');
-mongoose.Promise = Promise;
 
+mongoose.Promise = Promise;
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
@@ -21,5 +21,5 @@ Image.deleteMany().then(() => {
     const image = new Image(fake[imageIndex]);
     images.push(image.save());
   }
-  Promise.all(images).then(()=>{console.log('done'); process.exit()});
+  Promise.all(images).then(() => { process.exit(); });
 });

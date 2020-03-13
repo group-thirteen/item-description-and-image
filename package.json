@@ -10,7 +10,7 @@
     "build-dev": "webpack -dw",
     "server-dev": "nodemon ./server/index.js",
     "test": "jest",
-    "seed": "node server/seed.js"
+    "seed": "node database/seed.js"
   },
   "dependencies": {
     "express": "^4.17.1",

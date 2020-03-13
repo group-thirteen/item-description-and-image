@@ -15,7 +15,7 @@ const imageSchema = new mongoose.Schema({
 
 const Image = mongoose.model('Image', imageSchema);
 Image.deleteMany().then(() => {
-  const fake = JSON.parse(fs.readFileSync('fake.json', 'utf8'));
+  const fake = JSON.parse(fs.readFileSync('server/fake.json', 'utf8'));
   const images = [];
   for (let imageIndex = 0; imageIndex < fake.length; imageIndex += 1) {
     const image = new Image(fake[imageIndex]);

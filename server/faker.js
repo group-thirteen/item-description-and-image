@@ -10,8 +10,8 @@ const faker = () => {
   let output = [];
   for (let i = 0; i < colors.length; i += 1) {
     for (let j = 0; j < garments.length; j += 1) {
-      for (let k = 0; k < 5; k++) {
-        let garment = {};
+      for (let k = 0; k < 5; k += 1) {
+        const garment = {};
         garment.id = z;
         garment.color = colors[i];
         garment.type = garments[j];
@@ -21,10 +21,10 @@ const faker = () => {
     }
   }
   output = JSON.stringify(output);
-  const regex = /,/gi;
-  output = output.replace(regex, ',\n');
-  const regex2 = /},/gi;
-  output = output.replace(regex2, ',\n"url": ""\n},');
+  const allCommas = /,/gi;
+  output = output.replace(allCommas, ',\n');
+  const terminalCommas = /},/gi;
+  output = output.replace(terminalCommas, ',\n"url": ""\n},');
   fs.writeFileSync(filepath, output);
 };
 

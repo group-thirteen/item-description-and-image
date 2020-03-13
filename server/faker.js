@@ -2,8 +2,12 @@ const fs = require('fs');
 const path = require('path');
 
 const filepath = path.resolve(__dirname, 'fake.json');
-const colors = ['red', 'orange', 'yellow', 'blue', 'green', 'purple', 'pink', 'black', 'white', 'grey'];
-const garments = ['shirt', 'hat', 'pants', 'socks', 'swimsuit', 'dress', 'skirt', 'sweater', 'pajamas', 'shoes'];
+const colors = ['black', 'blue', 'green', 'grey', 'orange', 'pink', 'purple', 'red', 'white', 'yellow'];
+const garments = ['dress', 'hat', 'pajamas', 'pants', 'shirt', 'shoes', 'skirt', 'socks', 'sweater', 'swimsuit'];
+
+const northerlyURLsFileContents = fs.readFileSync('northerlyURLs.txt');
+console.log(northerlyURLsFileContents);
+// const urls = northerlyURLsFileContents.split('\n').splice(1);
 
 const faker = () => {
   let z = 0;

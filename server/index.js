@@ -12,7 +12,6 @@ app.get('/images/:id', (req, res) => {
     if (err) {
       return res.sendStatus(404);
     }
-    data = data.map((item)=>(item.url));
-    return res.send(data);
+    return res.send(data.map((item) => (item.url)));
   });
 });

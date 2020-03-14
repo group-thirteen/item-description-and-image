@@ -1,20 +1,7 @@
 const fs = require('fs');
-const mongoose = require('mongoose');
 const path = require('path');
+const { Image } = require('./db.js');
 
-mongoose.Promise = Promise;
-mongoose.set('useNewUrlParser', true);
-mongoose.set('useFindAndModify', false);
-mongoose.set('useCreateIndex', true);
-mongoose.set('useUnifiedTopology', true);
-mongoose.connect('mongodb://localhost/images');
-
-const imageSchema = new mongoose.Schema({
-  id: Number,
-  url: String,
-});
-
-const Image = mongoose.model('Image', imageSchema);
 Image.deleteMany().then(() => {
   const fake = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'fake.json'), 'utf8'));
   const images = [];

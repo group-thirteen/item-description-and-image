@@ -9,10 +9,12 @@
   "scripts": {
     "build-dev": "webpack -dw",
     "server-dev": "nodemon ./server/index.js",
-    "test": "jest"
+    "test": "jest",
+    "seed": "node database/seed.js"
   },
   "dependencies": {
     "express": "^4.17.1",
+    "mongoose": "^5.9.4",
     "react": "^16.13.0",
     "react-dom": "^16.13.0"
   },

@@ -1,4 +1,6 @@
 public
+coverage
+server/__tests__
 
 node_modules
 .eslintrc.js

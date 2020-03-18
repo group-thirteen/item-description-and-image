@@ -1,10 +1,11 @@
 import React from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 const server = process.env.SERVER || 'http://localhost:3000';
 
 class App extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       urls: [],
@@ -12,18 +13,18 @@ class App extends React.Component {
     };
     this.fetch();
     this.fetch = this.fetch.bind(this);
-    }
+  }
 
   fetch() {
     axios.get(server.concat(`/images/${this.props.ID}`))
-    .then(response => {
-      const state = this.state;
-      this.state.urls = response.data;
-      this.setState(state);
-    });
-    
+      .then((response) => {
+        const { state } = this;
+        state.urls = response.data;
+        this.setState(state);
+      });
   }
-  render() { 
+
+  render() {
     return (
       <div id='imageDisplayer'>
         hello {this.state.urls[this.state.currentIndex]}
@@ -31,5 +32,9 @@ class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  ID: PropTypes.number,
+};
 
 export default App;

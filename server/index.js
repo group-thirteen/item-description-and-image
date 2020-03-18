@@ -1,14 +1,15 @@
 const express = require('express');
 const path = require('path');
-const { getImagesByID } = require(
-  path.resolve(__dirname, '..', 'database', 'db.js'));
 const cors = require('cors');
+
+const { getImagesByID } = require('../database/db.js');
+
 
 const corsOptions = {
   origin: 'http://localhost:3000',
-  methods: "GET",
-  optionsSuccessStatus: 200
-}
+  methods: 'GET',
+  optionsSuccessStatus: 200,
+};
 
 const app = express();
 const port = process.env.PORT || 3000;

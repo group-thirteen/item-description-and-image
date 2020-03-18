@@ -27,7 +27,12 @@ class App extends React.Component {
   render() {
     return (
       <div id='imageDisplayer'>
-        hello {this.state.urls[this.state.currentIndex]}
+        <span>
+          hello
+        </span>
+        <span>
+          {this.state.urls[this.state.currentIndex]}
+        </span>
       </div>
     );
   }

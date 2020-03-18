@@ -14,9 +14,9 @@ describe('App Component', ()=>{
   test('It should take an ID number as a prop', ()=>{
     const app = new App({ID: 1});
 
-    app.revealID = function () {return this.props.ID;}
+    const revealID = function (item) {return item.props.ID;}
 
-    expect(app.revealID()).toBe(1);
+    expect(revealID(app)).toBe(1);
     
   });
 

@@ -2,9 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import App from '../components/App.jsx';
 
-jest.mock('axios');
-
-
 describe('App Component', () => {
   test('It should be a class component', () => {
     expect(App.toString().includes('class App '))
@@ -16,19 +13,13 @@ describe('App Component', () => {
     expect(wrapper.instance().props.ID).toBe(1);
   });
 
-  test('It should fetch an array of urls', async () => {
+  test('It should fetch an array of objects with urls', async () => {
     const wrapper = shallow(<App ID={1} />);
-    const wait1Second = (x) => new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(x);
-      }, 1000);
-    });
+    const output = await wrapper.instance().fetch();
 
-    const output = await wait1Second(wrapper.instance().state);
-
-    expect(Array.isArray(output.urls)).toBe(true);
-    expect(output.urls[0].toString() === output.urls[0]).toBe(true);
-    expect(output.urls[0].includes('/')).toBe(true);
-    expect(output.urls[0].includes('.')).toBe(true);
+    expect(Array.isArray(output)).toBe(true);
+    expect(output[0].toString() === output[0]).toBe(true);
+    expect(output[0].includes('/')).toBe(true);
+    expect(output[0].includes('.')).toBe(true);
   });
 });

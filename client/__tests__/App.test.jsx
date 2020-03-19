@@ -8,13 +8,12 @@ describe('App Component', () => {
       .toBe(true);
   });
 
+  const wrapper = shallow(<App ID={1} />);
   test('It should take an ID number as a prop', () => {
-    const wrapper = shallow(<App ID={1} />);
     expect(wrapper.instance().props.ID).toBe(1);
   });
 
   test('It should fetch an array of objects with urls', async () => {
-    const wrapper = shallow(<App ID={1} />);
     const output = await wrapper.instance().fetch();
 
     expect(Array.isArray(output)).toBe(true);

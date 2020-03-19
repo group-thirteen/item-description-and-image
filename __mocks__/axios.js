@@ -4,7 +4,7 @@ let sampleData = [
   {
     _id: '5e7049c6a560d81678df6e47',
     id: 1,
-    url: 'northerly-images.s3.amazonaws.com/clothing/black/hat/\
+    url: '!!northerly-images.s3.amazonaws.com/clothing/black/hat/\
   15f23779-c608-4d1a-b542-efbfc3946567.jpeg',
     __v: 0,
   },

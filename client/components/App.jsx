@@ -38,10 +38,18 @@ class App extends React.Component {
     return response.data;
   }
 
+  setCurrentIndexGen(i) {
+    return () => {
+      this.setState({ currentIndex: i });
+      return i;
+    };
+  }
+
   render() {
     return (
       <FlexHoriz id='imageDisplayer'>
-          <Carousel URLs={this.state.urls}/>
+          <Carousel URLs={this.state.urls}
+          setIndex={this.setCurrentIndexGen.bind(this)}/>
           <Viewer image={this.state.urls[this.state.currentIndex]} />
       </FlexHoriz>
     );

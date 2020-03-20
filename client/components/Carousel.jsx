@@ -14,7 +14,9 @@ class Carousel extends React.Component {
       <span id="Carousel" >
         {this.props.URLs.map((url, index) => (
           <div key={index}>
-            <img src={`http://${url}`} height="75"></img>
+            <img src={`http://${url}`} height="75"
+               onClick={this.props.setIndex(index)}>
+               </img>
           </div>
         ))}
       </span>
@@ -25,6 +27,7 @@ class Carousel extends React.Component {
 Carousel.propTypes = {
   URLs: PropTypes.array.isRequired,
   current: PropTypes.number,
+  setIndex: PropTypes.func.isRequired,
 };
 
 export default Carousel;

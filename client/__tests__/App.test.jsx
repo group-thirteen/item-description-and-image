@@ -21,4 +21,10 @@ describe('App Component', () => {
     expect(output[0].includes('/')).toBe(true);
     expect(output[0].includes('.')).toBe(true);
   });
+
+  test('It should have a function generator to update currentIndex', () => {
+    const setIndexToZero = wrapper.instance().setCurrentIndexGen(0);
+    expect(typeof setIndexToZero).toBe('function');
+    expect(setIndexToZero()).toBe(0);
+  });
 });

@@ -31,5 +31,5 @@ describe('ZoomModal component', () => {
       setIndex = {() => {}}/>);
     expect(wrapper.find('#ModalCarousel').children().first().children().length)
       .toBe(sampleURLs.length);
-  })
+  });
 });

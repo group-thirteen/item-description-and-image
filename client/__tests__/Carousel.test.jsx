@@ -17,28 +17,21 @@ const sampleURLs = [
 ];
 
 describe('Carousel component', () => {
-  test('It should be a class component', () => {
+  test('It should not be a class component', () => {
     expect(Carousel.toString().includes('class Carousel '))
-      .toBe(true);
+      .toBe(false);
   });
 
   const wrapper = shallow(<Carousel URLs={sampleURLs} setIndex={() => {}}/>);
-  const urls = wrapper.instance().props.URLs;
-  test('It should take an array of urls as a prop', () => {
-    expect(Array.isArray(urls)).toBe(true);
-    expect(urls[0].toString() === urls[0]).toBe(true);
-    expect(urls[0].includes('/')).toBe(true);
-    expect(urls[0].includes('.')).toBe(true);
-  });
 
   test('It should display an image for each image url', () => {
-    expect(wrapper.children()).toHaveLength(urls.length);
+    expect(wrapper.children()).toHaveLength(sampleURLs.length);
   });
 
   test('It should alter the App state when a thumbnail is clicked', () => {
     const app = mount(<App ID={1} />);
     const thumbnail = app.find(Carousel).find('img').last();
     thumbnail.simulate('click');
-    expect(app.state('currentIndex')).toBe(app.state('urls').length - 1);
+    expect(app.state('currentIndex')).toBe(sampleURLs.length - 1);
   });
 });

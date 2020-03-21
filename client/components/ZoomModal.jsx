@@ -15,15 +15,25 @@ const Modal = styled.div`
   top: 0;
 `;
 
+const Fullscreen = styled.img`
+  position: relative;
+  width: calc(100% - 60px);
+  left: 60px;
+`;
+
 const Button = styled.img`
   position: fixed;
   top: 0;
   right: 25px;
   height: 25px;
+  z-index: 2;
 `;
 
 const FixedSpan = styled.span`
   position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 2;
 
 `;
 
@@ -49,11 +59,15 @@ ModalCarousel.propTypes = {
 
 function ZoomModal(props) {
   return (
-    <Modal onClick={props.toggle}>
-      <Button src={`${server}/circleX.png`} />
+    <Modal>
+      <Button src={`${server}/circleX.png`}
+        onClick={props.toggle}
+      />
       <ModalCarousel URLs={props.URLs}
           setIndex={props.setIndex}/>
-      <img src={`http://${props.URLs[props.current]}`}></img>
+      <Fullscreen src={`http://${props.URLs[props.current]}`}
+        onClick={props.toggle}
+      />
     </Modal>
   );
 }

@@ -1,25 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-class Viewer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      clicked: false,
-    };
-  }
+const Image = styled.img`
+  height: 375px;
+`;
 
-  render() {
-    return (
-      <span id="Viewer" >
-        <img src={`http://${this.props.image}`} height="375"></img>
-      </span>
-    );
-  }
+function Viewer(props) {
+  return (
+    <span id="Viewer" >
+    <Image src={`http://${props.image}`} onClick={props.toggle} />
+    </span>
+  );
 }
 
 Viewer.propTypes = {
   image: PropTypes.string.isRequired,
+  toggle: PropTypes.func,
 };
 
 export default Viewer;

@@ -29,7 +29,7 @@ const FixedSpan = styled.span`
 
 function ModalCarousel(props) {
   return (
-    <FixedSpan id="Carousel" >
+    <FixedSpan id="ModalCarousel" >
       {props.URLs.map((url, index) => (
         <div key={index}>
           <img src={`http://${url}`} height="75"
@@ -60,7 +60,7 @@ function ZoomModal(props) {
 
 ZoomModal.propTypes = {
   URLs: PropTypes.array.isRequired,
-  current: PropTypes.number,
+  current: PropTypes.number.isRequired,
   setIndex: PropTypes.func.isRequired,
   toggle: PropTypes.func,
 };

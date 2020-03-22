@@ -17,12 +17,12 @@ const sampleURLs = [
   'localhost:3000/images/7.jpeg',
 ];
 
+const server = process.env.SERVER || 'http://localhost:3000';
+
+const numImages = 5;
 const FlexHoriz = styled.div`
   display: flex;
 `;
-
-const server = process.env.SERVER || 'http://localhost:3000';
-const numImages = 5;
 
 class App extends React.Component {
   constructor(props) {
@@ -79,18 +79,6 @@ class App extends React.Component {
   }
 
   render() {
-    let zoomModal;
-    if (this.state.zoomed) {
-      zoomModal = (
-        <ZoomModal toggle={this.toggleZoomed.bind(this)}
-        URLs = {this.state.urls}
-        setIndex={this.setCurrentIndexGen.bind(this)}
-        current={this.state.currentIndex}
-        top={this.state.top}
-        />
-      );
-    }
-
     return (
       <FlexHoriz id='imageDisplayer'>
           <Carousel
@@ -99,11 +87,19 @@ class App extends React.Component {
             top={this.state.top}
             shiftUp={this.shiftUp.bind(this)}
             shiftDown={this.shiftDown.bind(this)}
+            numImages={numImages}
           />
           <Viewer image={this.state.urls[this.state.currentIndex]}
             toggle={this.toggleZoomed.bind(this)}
            />
-          {zoomModal}
+          {this.state.zoomed &&
+            <ZoomModal toggle={this.toggleZoomed.bind(this)}
+            URLs = {this.state.urls}
+            setIndex={this.setCurrentIndexGen.bind(this)}
+            current={this.state.currentIndex}
+            top={this.state.top}
+            />
+          }
       </FlexHoriz>
     );
   }

@@ -10,20 +10,17 @@ height: ${(props) => (`${imgHeight * props.numImages}px`)};
 overflow: hidden;
 `;
 
-const GreyChevUp = styled(ChevronUp)`
+const chevStyles = `
   color: #333;
   height: 20px;
   width: 49px;
 `;
+const GreyChevUp = styled(ChevronUp)`${chevStyles}`;
 
-const GreyChevDown = styled(ChevronDown)`
-  color: #333;
-  height: 20px;
-  width: 49px;
-`;
+const GreyChevDown = styled(ChevronDown)`${chevStyles}`;
 
 const ImageSelect = styled.div`
-  transform: ${props => `translateY(-${props.offset}px)`}
+  transform: ${(props) => `translateY(-${props.offset}px)`}
 `;
 
 function Carousel(props) {
@@ -31,7 +28,7 @@ function Carousel(props) {
 
   return (
     <div id="Carousel" >
-      <GreyChevUp onClick={props.shiftUp} />
+      {props.top !== 0 && <GreyChevUp onClick={props.shiftUp} />}
       <CarouselWrapper numImages={props.numImages}>
       <ImageSelect id ="imageSelect" offset={offset}>
       {props.URLs.map((url, index) => (
@@ -43,7 +40,8 @@ function Carousel(props) {
       ))}
       </ImageSelect>
       </CarouselWrapper>
-      <GreyChevDown onClick={props.shiftDown} />
+      {props.top < props.URLs.length - props.numImages
+      && <GreyChevDown onClick={props.shiftDown} />}
     </div>
   );
 }

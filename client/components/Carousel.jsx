@@ -1,20 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { ChevronUp, ChevronDown } from '@styled-icons/boxicons-solid';
+
+const imgHeight = 75;
+
+const CarouselWrapper = styled.div`
+height: ${(props) => (`${imgHeight * props.numImages}px`)};
+overflow: hidden;
+`;
+
+const GreyChevUp = styled(ChevronUp)`
+  color: #333;
+  height: 20px;
+  width: 49px;
+`;
+
+const GreyChevDown = styled(ChevronDown)`
+  color: #333;
+  height: 20px;
+  width: 49px;
+`;
+
+const ImageSelect = styled.div`
+  transform: ${props => `translateY(-${props.offset}px)`}
+`;
 
 function Carousel(props) {
-  const imgHeight = 75;
-  const offset = props.top * imgHeight;
-  const imgSelectStyle = {
-    transform: `translateY(-${offset}px)`,
-    overflow: 'hidden',
-    zindex: '-1',
-  };
+  const offset = props.top * (imgHeight + 4);
 
   return (
     <div id="Carousel" >
-      <button onClick={props.shiftUp}/>
-      <div id ="imageSelect" style={imgSelectStyle}>
+      <GreyChevUp onClick={props.shiftUp} />
+      <CarouselWrapper numImages={props.numImages}>
+      <ImageSelect id ="imageSelect" offset={offset}>
       {props.URLs.map((url, index) => (
         <div key={index}>
           <img src={`http://${url}`} height={`${imgHeight}px`}
@@ -22,8 +41,9 @@ function Carousel(props) {
               </img>
         </div>
       ))}
-      </div>
-      <button onClick={props.shiftDown} />
+      </ImageSelect>
+      </CarouselWrapper>
+      <GreyChevDown onClick={props.shiftDown} />
     </div>
   );
 }
@@ -35,6 +55,7 @@ Carousel.propTypes = {
   top: PropTypes.number,
   shiftUp: PropTypes.func,
   shiftDown: PropTypes.func,
+  numImages: PropTypes.number,
 };
 
 export default Carousel;

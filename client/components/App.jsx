@@ -85,6 +85,7 @@ class App extends React.Component {
             URLs={this.state.urls}
             setIndex={this.setCurrentIndexGen.bind(this)}
             top={this.state.top}
+            current={this.state.currentIndex}
             shiftUp={this.shiftUp.bind(this)}
             shiftDown={this.shiftDown.bind(this)}
             numImages={numImages}
@@ -92,8 +93,9 @@ class App extends React.Component {
           <Viewer image={this.state.urls[this.state.currentIndex]}
             toggle={this.toggleZoomed.bind(this)}
            />
-          {this.state.zoomed &&
-            <ZoomModal toggle={this.toggleZoomed.bind(this)}
+          {this.state.zoomed
+          && <ZoomModal
+            toggle={this.toggleZoomed.bind(this)}
             URLs = {this.state.urls}
             setIndex={this.setCurrentIndexGen.bind(this)}
             current={this.state.currentIndex}

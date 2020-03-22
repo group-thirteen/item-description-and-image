@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { XCircle } from '@styled-icons/boxicons-solid';
+
 const server = 'http://localhost:3000';
 
 const Modal = styled.div`

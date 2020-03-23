@@ -15,6 +15,9 @@ const sampleURLs = [
   'localhost:3000/images/5.jpeg',
   'localhost:3000/images/6.jpeg',
   'localhost:3000/images/7.jpeg',
+  'localhost:3000/images/8.jpeg',
+  'localhost:3000/images/9.jpeg',
+  'localhost:3000/images/10.jpeg',
 ];
 
 const server = process.env.SERVER || 'http://localhost:3000';
@@ -60,8 +63,8 @@ class App extends React.Component {
 
   shiftDown() {
     let index = this.state.top;
-    const distance = index + numImages >= this.state.urls.length
-      ? this.state.urls.length - 1 - index
+    const distance = index + numImages >= this.state.urls.length - 1
+      ? this.state.urls.length - index - numImages
       : numImages;
     index += distance;
     this.setState({ top: index });
@@ -72,7 +75,7 @@ class App extends React.Component {
     let index = this.state.top;
     const distance = index - numImages <= 0
       ? index
-      : index - numImages;
+      : numImages;
     index -= distance;
     this.setState({ top: index });
     return distance;

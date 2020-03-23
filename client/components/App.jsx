@@ -36,7 +36,7 @@ class App extends React.Component {
       zoomed: false,
       top: 0,
     };
-    // this.fetch();
+    this.fetch();
     this.fetch = this.fetch.bind(this);
   }
 

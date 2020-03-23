@@ -66,7 +66,7 @@ class App extends React.Component {
     const distance = index + numImages >= this.state.urls.length - 1
       ? this.state.urls.length - index - numImages
       : numImages;
-    index += distance;
+    if (distance > 0) { index += distance; }
     this.setState({ top: index });
     return distance;
   }

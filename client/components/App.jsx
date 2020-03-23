@@ -12,13 +12,20 @@ const sampleURLs = [
   'localhost:3000/images/2.jpeg',
   'localhost:3000/images/3.jpeg',
   'localhost:3000/images/4.jpeg',
+  'localhost:3000/images/5.jpeg',
+  'localhost:3000/images/6.jpeg',
+  'localhost:3000/images/7.jpeg',
+  'localhost:3000/images/8.jpeg',
+  'localhost:3000/images/9.jpeg',
+  'localhost:3000/images/10.jpeg',
 ];
 
+const server = process.env.SERVER || 'http://localhost:3000';
+
+const numImages = 5;
 const FlexHoriz = styled.div`
   display: flex;
 `;
-
-const server = process.env.SERVER || 'http://localhost:3000';
 
 class App extends React.Component {
   constructor(props) {
@@ -27,8 +34,9 @@ class App extends React.Component {
       urls: sampleURLs,
       currentIndex: 0,
       zoomed: false,
+      top: 0,
     };
-    // this.fetch();
+    this.fetch();
     this.fetch = this.fetch.bind(this);
   }
 
@@ -53,25 +61,50 @@ class App extends React.Component {
     };
   }
 
-  render() {
-    let zoomModal;
-    if (this.state.zoomed) {
-      zoomModal = (
-        <ZoomModal toggle={this.toggleZoomed.bind(this)}
-        URLs = {this.state.urls}
-        setIndex={this.setCurrentIndexGen.bind(this)}
-        current={this.state.currentIndex}
-        />
-      );
-    }
+  shiftDown() {
+    let index = this.state.top;
+    const distance = index + numImages >= this.state.urls.length - 1
+      ? this.state.urls.length - index - numImages
+      : numImages;
+    if (distance > 0) { index += distance; }
+    this.setState({ top: index });
+    return distance;
+  }
 
+  shiftUp() {
+    let index = this.state.top;
+    const distance = index - numImages <= 0
+      ? index
+      : numImages;
+    index -= distance;
+    this.setState({ top: index });
+    return distance;
+  }
+
+  render() {
     return (
       <FlexHoriz id='imageDisplayer'>
-          <Carousel URLs={this.state.urls}
-          setIndex={this.setCurrentIndexGen.bind(this)}/>
+          <Carousel
+            URLs={this.state.urls}
+            setIndex={this.setCurrentIndexGen.bind(this)}
+            top={this.state.top}
+            current={this.state.currentIndex}
+            shiftUp={this.shiftUp.bind(this)}
+            shiftDown={this.shiftDown.bind(this)}
+            numImages={numImages}
+          />
           <Viewer image={this.state.urls[this.state.currentIndex]}
-            toggle={this.toggleZoomed.bind(this)} />
-            {zoomModal}
+            toggle={this.toggleZoomed.bind(this)}
+           />
+          {this.state.zoomed
+          && <ZoomModal
+            toggle={this.toggleZoomed.bind(this)}
+            URLs = {this.state.urls}
+            setIndex={this.setCurrentIndexGen.bind(this)}
+            current={this.state.currentIndex}
+            top={this.state.top}
+            />
+          }
       </FlexHoriz>
     );
   }

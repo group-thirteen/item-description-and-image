@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { XCircle } from '@styled-icons/boxicons-solid';
 
 const server = 'http://localhost:3000';
 
@@ -21,7 +22,7 @@ const Fullscreen = styled.img`
   left: 60px;
 `;
 
-const Button = styled.img`
+const Button = styled(XCircle)`
   position: fixed;
   top: 0;
   right: 25px;
@@ -34,7 +35,9 @@ const FixedSpan = styled.span`
   top: 8px;
   left: 8px;
   z-index: 2;
-
+  height:100%;
+  width: 70px;
+  overflow-y: scroll;
 `;
 
 function ModalCarousel(props) {

@@ -34,4 +34,25 @@ describe('App Component', () => {
     expect(wrapper.state('zoomed')).toBe(true);
     wrapper.instance().toggleZoomed();
   });
+
+  test('It should have functions to shift up and down', () => {
+    expect(typeof wrapper.instance().shiftDown).toBe('function');
+    expect(typeof wrapper.instance().shiftUp).toBe('function');
+  });
+
+  test('It should shift down if there are enough images', () => {
+    if (wrapper.state('urls').length > 5) {
+      const distance = wrapper.instance().shiftDown();
+      expect(wrapper.state('top')).toBe(distance);
+      wrapper.instance.shiftUp();
+    }
+  });
+
+  test('It should shift up if there are enough images', () => {
+    if (wrapper.state('urls').length > 5) {
+      let distance = wrapper.instance().shiftDown();
+      distance -= wrapper.instance().shiftUp();
+      expect(wrapper.state('top')).toBe(distance);
+    }
+  });
 });

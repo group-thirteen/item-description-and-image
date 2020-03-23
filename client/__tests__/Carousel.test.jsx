@@ -14,6 +14,9 @@ const sampleURLs = [
   'localhost:3000/images/2.jpeg',
   'localhost:3000/images/3.jpeg',
   'localhost:3000/images/4.jpeg',
+  'localhost:3000/images/5.jpeg',
+  'localhost:3000/images/6.jpeg',
+  'localhost:3000/images/7.jpeg',
 ];
 
 describe('Carousel component', () => {
@@ -25,13 +28,13 @@ describe('Carousel component', () => {
   const wrapper = shallow(<Carousel URLs={sampleURLs} setIndex={() => {}}/>);
 
   test('It should display an image for each image url', () => {
-    expect(wrapper.children()).toHaveLength(sampleURLs.length);
+    expect(wrapper.find('#imageSelect').children()).toHaveLength(sampleURLs.length);
   });
 
   test('It should alter the App state when a thumbnail is clicked', () => {
     const app = mount(<App ID={1} />);
     const thumbnail = app.find(Carousel).find('img').last();
     thumbnail.simulate('click');
-    expect(app.state('currentIndex')).toBe(sampleURLs.length - 1);
+    expect(app.state('currentIndex')).toBe(app.state('urls').length - 1);
   });
 });

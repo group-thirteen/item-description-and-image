@@ -27,4 +27,11 @@ describe('App Component', () => {
     expect(typeof setIndexToZero).toBe('function');
     expect(setIndexToZero()).toBe(0);
   });
+
+  test('It should toggle its state when ToggleZoomed is triggered', () => {
+    expect(wrapper.state('zoomed')).toBe(false);
+    wrapper.instance().toggleZoomed();
+    expect(wrapper.state('zoomed')).toBe(true);
+    wrapper.instance().toggleZoomed();
+  });
 });

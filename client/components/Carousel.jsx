@@ -1,27 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Carousel extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selected: this.props.current || 0,
-    };
-  }
-
-  render() {
-    return (
-      <span id="Carousel" >
-        {this.props.URLs.map((url, index) => (
-          <div key={index}>
-            <img src={`http://${url}`} height="75"
-               onClick={this.props.setIndex(index)}>
-               </img>
-          </div>
-        ))}
-      </span>
-    );
-  }
+function Carousel(props) {
+  return (
+    <span id="Carousel" >
+      {props.URLs.map((url, index) => (
+        <div key={index}>
+          <img src={`http://${url}`} height="75"
+              onClick={props.setIndex(index)}>
+              </img>
+        </div>
+      ))}
+    </span>
+  );
 }
 
 Carousel.propTypes = {

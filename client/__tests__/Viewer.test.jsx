@@ -3,21 +3,17 @@ import { shallow } from 'enzyme';
 import Viewer from '../components/Viewer.jsx';
 
 describe('Viewer component', () => {
-  test('It should be a class component', () => {
+  test('It should not be a class component', () => {
     expect(Viewer.toString().includes('class Viewer '))
-      .toBe(true);
+      .toBe(false);
   });
-});
 
-const wrapper = shallow(<Viewer image='localhost:3000/images/0.jpeg'/>);
-test('It should take an image url as a prop', () => {
-  expect(wrapper.instance().props.image)
-    .toBe('localhost:3000/images/0.jpeg');
-});
+  const wrapper = shallow(<Viewer image='localhost:3000/images/0.jpeg'/>);
 
-test('It should render that url as an image somehow', () => {
-  expect(wrapper.containsMatchingElement(
-    <img src="http://localhost:3000/images/0.jpeg" />,
-  ))
-    .toBe(true);
+  test('It should render that url as an image once', () => {
+    expect(wrapper.findWhere(
+      (item) => item.prop('src') === 'http://localhost:3000/images/0.jpeg',
+    )
+      .length).toBe(1);
+  });
 });

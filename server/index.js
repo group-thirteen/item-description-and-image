@@ -6,7 +6,6 @@ const { getImagesByID } = require('../database/db.js');
 
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
   methods: 'GET',
   optionsSuccessStatus: 200,
 };
